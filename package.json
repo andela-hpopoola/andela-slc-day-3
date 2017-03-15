@@ -1,0 +1,22 @@
+{
+  "name": "andela-slc-day-3",
+  "version": "1.0.0",
+  "description": "My Self Learning Clinic Solutions for Day 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harunapopoola/andela-slc-day-3.git"
+  },
+  "author": "Haruna Popoola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harunapopoola/andela-slc-day-3/issues"
+  },
+  "homepage": "https://github.com/harunapopoola/andela-slc-day-3#readme",
+  "devDependencies": {
+    "jasmine": "^2.5.3"
+  }
+}
