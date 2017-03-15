@@ -64,8 +64,6 @@ var findMissing = function findMissing(arr1, arr2) {
  *  
  *  Tip gotten from http://stackoverflow.com/a/33034768
  */
-
-
 Array.prototype.difference = function(arr){
 
 	// return only values that doesn't exist arr

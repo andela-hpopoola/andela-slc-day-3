@@ -82,11 +82,9 @@ Array.prototype.search = function(number){
 	 *  
 	 */
 	if (number === this[low]){ 
-		return { 
-			count: count, 
-			index: low,
-			length: arrayLength
-		};
+
+		//Number found, return low as index
+		return this.searchResult(count, low, arrayLength);
 
 	} else {
 
@@ -96,27 +94,17 @@ Array.prototype.search = function(number){
 	}
 
 	if (number === this[high]){ // number is equal to highest index
-
-		return { 
-			count: count, 
-			index: high,
-			length: arrayLength
-		};
+		//Number found, return high as index
+		return this.searchResult(count, high, arrayLength);
 
 	} else {
-
 		high = high - 1;
 	} 
 
 	// number is equal to middle index
 	if (number === this[middle]){ 
-
-			return { 
-				count: count, 
-				index: middle,
-				length: arrayLength
-			};
-
+		//Number found, return middle as index
+		return this.searchResult(count, middle, arrayLength);
 	}
 
 
@@ -134,35 +122,27 @@ Array.prototype.search = function(number){
 		// Get the middle number
 		middle = Math.floor((low + high)/ 2);
 
-		
-		if (number === this[low]){ // number is equal to lowest index
-			return { 
-				count: count, 
-				index: low,
-				length: arrayLength
-			};
+		// number is equal to lowest index
+		if (number === this[low]){ 
+			//Number found, return low as index
+			return this.searchResult(count, low, arrayLength);
 
 		} else {
 			low = low + 1;
 
 		}
 
-		if (number === this[high]){ // number is equal to highest index
-
-			return { 
-				count: count, 
-				index: high,
-				length: arrayLength
-			};
+		// number is equal to highest index
+		if (number === this[high]){ 
+			//Number found, return high as index
+			return this.searchResult(count, high, arrayLength);
 
 		} else {
-			
 			high = high - 1;
 		} 
 
 
 		if (number > this[middle]){ // number is greater than middle number
-
 			/*
 			 *  Shift lowest number forward
 			 *  Number can be found in next branch
@@ -171,7 +151,6 @@ Array.prototype.search = function(number){
 			low = middle + 1;
 
 		} else if (number < this[middle]) {
-
 			/*
 			 *  Shift highest number backward
 			 *  Number can be found in previous branch
@@ -181,37 +160,41 @@ Array.prototype.search = function(number){
 
 		} else {
 
-			/*
-			 *  Number Found
-			 *  return an object
-			 *  
-			 *  count : number of iterations made
-			 *  index : index of number found
-			 *  length : number of elements in array
-			 */ 
-			return { 
-				count: count, 
-				index: middle,
-				length: arrayLength
-			};
+			//Number found, return middle as index
+			return this.searchResult(count, middle, arrayLength);
 		}
 	}
 
-	// Not found, return object
-	return {
-		count: count,
-		index: -1,
-		length: arrayLength
-	};;
+	// Not found, return -1 as index
+	return this.searchResult(count, -1, arrayLength);
+
 }
 
-var oneToTwenty = [].toTwenty();
-var twoToForty = [].toForty();
-var tenToOneThousand = [].toOneThousand();
+/*
+ *  Number Found
+ *  return an object
 
-var search  = tenToOneThousand.search(40);
-search = oneToTwenty.search(33);
-console.log(twoToForty.search(20));
+ *  
+ *  @params count : number of iterations made
+ *  @params index : index of number found
+ *  @params length : number of elements in array
+ */ 
+Array.prototype.searchResult = function(count, index, arrayLength){
+
+	return { 
+		count: count, 
+		index: index,
+		length: arrayLength
+	};
+}
+
+// var oneToTwenty = [].toTwenty();
+// var twoToForty = [].toForty();
+// var tenToOneThousand = [].toOneThousand();
+
+// var search  = tenToOneThousand.search(40);
+// search = oneToTwenty.search(33);
+// console.log(twoToForty.search(20));
 // console.log(search);
 
 module.exports = Array.prototype;
